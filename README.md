@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 # E-commerce
+# Just in case checking pull request to the main
 =======
 # Getting Started with Create React App
 
