@@ -33,7 +33,7 @@ const Navbar = () => {
           <ul>
             <li>Wishlist</li>
             <li>Cart</li>
-            <img src={user} />
+            <img src={} />
           </ul>
         </div>
       </nav>
