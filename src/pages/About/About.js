@@ -1,3 +1,10 @@
+import Navbar from "../../components/Navbar/Navbar";
+
 export default function About() {
-  return <div>Azat</div>;
+  return (
+    <div>
+      <Navbar />
+      <p>Azat</p>
+    </div>
+  );
 }
