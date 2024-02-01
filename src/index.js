@@ -1,11 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom"; // Corrected import statement
+import ReactDOM from "react-dom"; // Правильный импорт
 import { AppRoutes } from "./routes";
 import "./styles/global.css";
+import "./styles/variables.css"
 import { RouterProvider } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={AppRoutes} />
   </React.StrictMode>

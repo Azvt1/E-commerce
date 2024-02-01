@@ -1,0 +1,34 @@
+.cat_container {
+    width: 1420px;
+    display: flex;
+    gap: 20px;
+}
+
+.category {
+    min-height: 495px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 34px;
+}
+.category > a {
+    color: var(--color-black);
+    padding: 7px 24px;
+    background: var(--color-white);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 10%;
+    line-height: 20.23px;
+    text-decoration: none;
+    transition: all 1s ease-in;
+  }
+  
+  .category:hover > a {
+    text-decoration: underline;
+    transition: text-decoration 0.5s ease-in;
+  }
+  
