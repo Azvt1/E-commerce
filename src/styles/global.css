@@ -7,4 +7,5 @@ body {
   background-color: var(--color-background-primary);
   font-family: "Marcellus", sans-serif;
   font-size: 302;
+  height: 100%;
 }
