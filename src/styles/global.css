@@ -3,10 +3,14 @@
   src: url("../assets/fonts/Marcellus-Regular.ttf") format("ttf");
 }
 
+@font-face {
+  font-family: "Jost";
+  src: url("../assets/fonts/Jost-Regular.ttf") format("ttf");
+}
+
 body {
   background-color: var(--color-background-primary);
   font-family: "Marcellus", sans-serif;
-  font-size: 302;
   margin: 0px;
 }
 
