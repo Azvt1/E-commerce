@@ -1,39 +1,66 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
 import user from "../../assets/img/la_user.svg";
+import searchIcon from "../../assets/img/Search.svg";
+import burgerIcon from "../../assets/img/burger.svg";
+import "./Navbar.css";
+import { useState } from "react";
 const Navbar = () => {
+  const [openMenu, setOpenMenu] = useState(false);
   return (
-    <div>
-      <nav>
-        <img src={logo} alt="Logo" />
-        <div>
-          <ul>
+    <div className="navbar_container">
+      <nav className="navbar">
+        <div className="image_container">
+          <Link to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
+        </div>
+        <div
+          className="menu"
+          onClick={() => {
+            setOpenMenu(!openMenu);
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className="navbar_middle">
+          <ul className={openMenu ? "open" : ""}>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">HOME</NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink to="/about">ABOUT</NavLink>
             </li>
             <li>
-              <Link to="/shop">Shop</Link>
+              <NavLink to="/shop">SHOP</NavLink>
             </li>
             <li>
-              <Link to="pages">Pages</Link>
+              <NavLink to="pages">PAGES</NavLink>
             </li>
             <li>
-              <Link to="blog">Blog</Link>
+              <NavLink to="blog">BLOG</NavLink>
             </li>
             <li>
-              <Link to="contact">Contact</Link>
+              <NavLink to="contact">CONTACT</NavLink>
             </li>
           </ul>
         </div>
 
-        <div>
-          <ul>
-            <li>Wishlist</li>
-            <li>Cart</li>
-            <img src={} />
+        <div className="navbar_right">
+          <ul className={openMenu ? "open" : ""}>
+            <li>WISHLIST</li>
+            <li>CART</li>
+            <li>
+              <img src={user} />
+            </li>
+            <li>
+              <img src={searchIcon} />
+            </li>
+            <li>
+              <img src={burgerIcon} />
+            </li>
           </ul>
         </div>
       </nav>
