@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom"; // Правильный импорт
 import { AppRoutes } from "./routes";
 import "./styles/global.css";
 import "./styles/variables.css"

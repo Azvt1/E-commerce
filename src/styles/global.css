@@ -8,14 +8,20 @@
   src: url("../assets/fonts/Jost-Regular.ttf") format("ttf");
 }
 
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   background-color: var(--color-background-primary);
   font-family: "Marcellus", sans-serif;
-  margin: 0px;
 }
 
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 120px;
 }
