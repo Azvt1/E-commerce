@@ -1,4 +1,13 @@
+
 .container{
     background-color: var(--color-white);
     padding: 120px 0;
+}
+=======
+.swiper {
+  margin-top: 10px;
+}
+
+.swiper h1 {
+  text-align: center;
 }
