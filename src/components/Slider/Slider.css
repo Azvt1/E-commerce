@@ -1,3 +1,58 @@
+.Swiper-container {
+  max-width: 100 px;
+  margin: 0 auto;
+}
+
+.slide {
+  text-align: left;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  object-fit: cover;
+}
+
 .slide p {
   font-size: 15px;
+}
+
+.slide:hover {
+  border-color: #023e8a;
+}
+
+.swiper {
+  width: 90%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 200px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.slider-info {
+  padding: 10px;
+}
+
+.slider-info a {
+  color: black;
+}
+
+a:link {
+  text-decoration: underline;
+  transition: color 0.5s ease;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #83c5be;
 }
