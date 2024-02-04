@@ -12,10 +12,11 @@ html {
 nav {
   display: flex;
   justify-content: space-between;
-  padding-top: 20px;
   padding-bottom: 5px;
+  margin-top: 10px;
   position: sticky;
   top: 0;
+  align-items: center;
 }
 
 .image_container {
@@ -42,6 +43,7 @@ nav ul li a {
   margin-right: 50px;
   list-style: none;
   text-decoration: none;
+  align-items: center;
 }
 
 .navbar_middle {

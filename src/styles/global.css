@@ -8,15 +8,14 @@
   src: url("../assets/fonts/Jost-Regular.ttf") format("ttf");
 }
 
-*{
-  margin: 0px;
+* {
   padding: 0px;
 }
 
 body {
   background-color: var(--color-background-primary);
   font-family: "Marcellus", sans-serif;
-    font-size: 302;
+  font-size: 302;
   height: 100%;
 }
 
