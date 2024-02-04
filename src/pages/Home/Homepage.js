@@ -3,13 +3,12 @@ import Navbar from "../../components/Navbar/Navbar";
 
 import Categories from "../../components/Categories/Categories";
 import ServiceCards from "../../components/ServiceCards/ServiceCards";
-import "./Homepage.css"
+import "./Homepage.css";
 import { Slider } from "../../components/Slider/Slider";
 import ladyInGlasses from "../../assets/img/LadyInGlasses.jpeg";
 import guyInJacket from "../../assets/img/guyInJacket.jpeg";
 import womanOnChair from "../../assets/img/womanOnChair.jpeg";
 import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
-
 
 export default function Homepage() {
   const slides = [
@@ -42,17 +41,20 @@ export default function Homepage() {
         "Suspendisse sodales lorem sit amet nisl pulvinar venenatis. Aliquam vitae diam aliquam, auctor nunc eu, feugiat erat. Quisque arcu lorem, posuere sed dignissim sed, varius.",
     },
   ];
-  return (
-     <div className="swiper">
-        <h1>New Collections</h1>
 
-        <Slider slides={slides} />
-     </div>
+  return (
     <div>
       <Navbar />
-      <div className="container">
-        <ServiceCards />
-        <Categories />
+      <div className="swiper">
+        <h1>New Collections</h1>
+        <Slider slides={slides} />
+      </div>
+      <div>
+        <div className="container">
+          <ServiceCards />
+          <Categories />
+        </div>
+      </div>
     </div>
   );
 }

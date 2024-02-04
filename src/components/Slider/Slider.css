@@ -10,8 +10,18 @@
   object-fit: cover;
 }
 
+.slider-info p {
+  text-align: left;
+}
+
+.slider-info h3 {
+  text-align: center;
+}
+
 .slide p {
   font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .slide:hover {
