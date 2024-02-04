@@ -13,7 +13,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   position: sticky;
   top: 0;
 }
@@ -48,6 +48,10 @@ nav ul li a {
   padding-left: 50px;
 }
 
+.navbar_middle ul li a {
+  text-decoration: none;
+}
+
 .navbar_container {
   background: #f1f1f0;
   padding: 0px;
@@ -73,6 +77,10 @@ nav .menu span {
   width: 100%;
   background-color: #111111;
   border-radius: 0.2rem;
+}
+
+.separator {
+  border-bottom: 2px solid #eee4e1;
 }
 
 @media (max-width: 480px) {
