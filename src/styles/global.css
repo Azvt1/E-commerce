@@ -3,9 +3,29 @@
   src: url("../assets/fonts/Marcellus-Regular.ttf") format("ttf");
 }
 
+@font-face {
+  font-family: "Jost";
+  src: url("../assets/fonts/Jost-Regular.ttf") format("ttf");
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   background-color: var(--color-background-primary);
   font-family: "Marcellus", sans-serif;
+    font-size: 302;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
   font-size: 302;
   height: 100%;
 }

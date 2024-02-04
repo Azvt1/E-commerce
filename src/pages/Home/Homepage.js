@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import "./Homepage.css";
+
+import Categories from "../../components/Categories/Categories";
+import ServiceCards from "../../components/ServiceCards/ServiceCards";
+import "./Homepage.css"
 import { Slider } from "../../components/Slider/Slider";
 import ladyInGlasses from "../../assets/img/LadyInGlasses.jpeg";
 import guyInJacket from "../../assets/img/guyInJacket.jpeg";
 import womanOnChair from "../../assets/img/womanOnChair.jpeg";
 import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
+
 
 export default function Homepage() {
   const slides = [
@@ -39,13 +43,16 @@ export default function Homepage() {
     },
   ];
   return (
-    <div>
-      <Navbar />
-      <div className="swiper">
+     <div className="swiper">
         <h1>New Collections</h1>
 
         <Slider slides={slides} />
-      </div>
+     </div>
+    <div>
+      <Navbar />
+      <div className="container">
+        <ServiceCards />
+        <Categories />
     </div>
   );
 }
