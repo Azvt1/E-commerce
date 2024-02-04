@@ -64,6 +64,7 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
+      <div className="separator"></div>
     </div>
   );
 };
