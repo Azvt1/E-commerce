@@ -12,6 +12,7 @@ import {
   Scrollbar,
   A11y,
   EffectCoverflow,
+  Autoplay,
 } from "swiper/modules";
 
 export const Slider = ({ slides }) => {
@@ -20,7 +21,15 @@ export const Slider = ({ slides }) => {
       <Swiper
         effect={"coverflow"}
         className="mySwiper"
-        modules={[Navigation, Pagination, A11y, Pagination, EffectCoverflow]}
+        loop={true}
+        modules={[
+          Navigation,
+          Pagination,
+          A11y,
+          Pagination,
+          EffectCoverflow,
+          Autoplay,
+        ]}
         spaceBetween={50}
         glabCursor={true}
         slidesPerView={3}
@@ -30,6 +39,10 @@ export const Slider = ({ slides }) => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
+        }}
+        autoplay={{
+          delay: 10000,
+          disableOnInteraction: false,
         }}
         navigation
         pagination={{ clickable: true }}
