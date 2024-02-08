@@ -9,6 +9,7 @@ import ladyInGlasses from "../../assets/img/LadyInGlasses.jpeg";
 import guyInJacket from "../../assets/img/guyInJacket.jpeg";
 import womanOnChair from "../../assets/img/womanOnChair.jpeg";
 import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
+import Collection from "../../components/Collection/Collection";
 
 export default function Homepage() {
   const slides = [
@@ -49,11 +50,15 @@ export default function Homepage() {
         <h1>New Collections</h1>
         <Slider slides={slides} />
       </div>
-      <div>
+      <div className="main_container">
         <div className="container">
           <ServiceCards />
           <Categories />
         </div>
+      </div>
+      <div className="collection_banner">
+        <Collection />
+        <h1>Collection</h1>
       </div>
     </div>
   );
