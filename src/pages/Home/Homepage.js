@@ -10,6 +10,7 @@ import guyInJacket from "../../assets/img/guyInJacket.jpeg";
 import womanOnChair from "../../assets/img/womanOnChair.jpeg";
 import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
 import Collection from "../../components/Collection/Collection";
+import NewArrivals from "../../components/NewArrivals/NewArrivals";
 
 export default function Homepage() {
   const slides = [
@@ -59,6 +60,9 @@ export default function Homepage() {
       <div className="collection_banner">
         <Collection />
         <h1>Collection</h1>
+      </div>
+      <div className="new_arrivals_banner">
+        <NewArrivals slides={slides} />
       </div>
     </div>
   );

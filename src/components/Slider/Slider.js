@@ -31,7 +31,7 @@ export const Slider = ({ slides }) => {
           Autoplay,
         ]}
         spaceBetween={50}
-        glabCursor={true}
+        grabCursor={true}
         slidesPerView={3}
         coverflowEffect={{
           rotate: 50,
@@ -52,11 +52,7 @@ export const Slider = ({ slides }) => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="slide">
-              <img
-                src={slide.image}
-                alt="cloth photo"
-                className="slide-image"
-              />
+              <img src={slide.image} alt="cloth" className="slide-image" />
               <div className="slider-info">
                 <h3>{slide.title.toUpperCase()}</h3>
                 <p>{slide.description}</p>
