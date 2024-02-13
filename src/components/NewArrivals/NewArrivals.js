@@ -50,7 +50,7 @@ export default function NewArrivals() {
       <Swiper
         slidesPerView={3}
         navigation={true}
-        spaceBetween={50}
+        spaceBetween={10}
         pagination={{
           type: "fraction",
         }}

@@ -1,10 +1,14 @@
 .swiper {
-  width: 95%;
+  width: 90%;
 }
 
 .slider_photo {
   width: 340px;
   height: 462px;
+}
+
+.slide_container {
+  margin: 0 50px;
 }
 
 .swiper-button-prev {
