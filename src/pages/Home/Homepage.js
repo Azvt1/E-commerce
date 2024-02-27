@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 
 import Categories from "../../components/Categories/Categories";
@@ -12,57 +12,81 @@ import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
 import Collection from "../../components/Collection/Collection";
 import NewArrivals from "../../components/NewArrivals/NewArrivals";
 
-export default function Homepage() {
-  const slides = [
-    {
-      id: 1,
-      image: ladyInGlasses,
-      title: "OUT CROP SWEATER",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras odio sapien, tincidunt ut blandit eu, luctus vitae nibh. Quisque consectetur porta cursus. Sed congue metus dolor, eu sodales orci interdum sit amet. Phasellus tortor urna, porttitor nec metus convallis, dignissim vehicula lorem. Pellentesque auctor orci eget eros auctor lobortis. Interdum.",
-    },
-    {
-      id: 2,
-      image: guyInJacket,
-      title: "SOFT LEATHER JACKETS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquam leo vitae elit faucibus fermentum. Proin bibendum elit quis porttitor suscipit. Pellentesque quis vehicula nunc",
-    },
-    {
-      id: 3,
-      image: womanOnChair,
-      title: "COZY COATS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu turpis quis nulla aliquam suscipit vel vel dui. Fusce id mi metus. Mauris mollis, est",
-    },
-    {
-      id: 4,
-      image: ladyInJeans,
-      title: "modern jeans",
-      description:
-        "Suspendisse sodales lorem sit amet nisl pulvinar venenatis. Aliquam vitae diam aliquam, auctor nunc eu, feugiat erat. Quisque arcu lorem, posuere sed dignissim sed, varius.",
-    },
-  ];
+import {
+  getNewCollectionsItems,
+  getCategoriesItems,
+  getCollectionOnBgrnd,
+  getNewArrivals,
+} from "../../service/api";
 
+export default function Homepage() {
+  const [newCollectionsItems, setNewCollectionItems] = useState([]);
+  const [categoriesItems, setCategoriesItems] = useState([]);
+  const [collectionBgrnd, setCollectionBgrnd] = useState([]);
+  const [newArrivals, setNewArrivals] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getNewCollectionsItems()
+      .then((data) => {
+        setNewCollectionItems(data);
+      })
+      .catch((error) => {
+        console.error("There was an error:", error);
+      });
+
+    getCategoriesItems()
+      .then((data) => {
+        setCategoriesItems(data);
+      })
+      .catch((error) => {
+        console.error("Could not fetch the categories", error);
+      });
+
+    getCollectionOnBgrnd()
+      .then((data) => {
+        setCollectionBgrnd(data);
+      })
+      .catch((error) => {
+        console.error(
+          "Could not fetch the collection with background image",
+          error
+        );
+      });
+
+    getNewArrivals()
+      .then((data) => {
+        setNewArrivals(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Could not fetch the new arrivals", error);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <Navbar />
       <div className="swiper">
         <h1>New Collections</h1>
-        <Slider slides={slides} />
+        <Slider testData={newCollectionsItems} />
       </div>
       <div className="main_container">
         <div className="container">
           <ServiceCards />
-          <Categories />
+          <Categories items={categoriesItems} />
         </div>
       </div>
       <div className="collection_banner">
-        <Collection />
+        <Collection collWBackgrnd={collectionBgrnd} />
         <h1>Collection</h1>
       </div>
       <div className="new_arrivals_banner">
-        <NewArrivals slides={slides} />
+        <NewArrivals newArrivals={newArrivals} />
       </div>
     </div>
   );

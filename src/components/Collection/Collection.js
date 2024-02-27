@@ -1,15 +1,29 @@
 import "./Collection.css";
-import Image from "../../assets/img/collection.png"
+import { useState, useEffect } from "react";
+const Collection = ({ collWBackgrnd }) => {
+  const collectionItem = collWBackgrnd[0]; // Assuming you only want to display the first item
+  const [isVisible, setIsVisible] = useState(false);
 
-const Collection = () => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 2000); // 2000 milliseconds = 2 seconds
+
+    // Clear the timer when the component unmounts or when collWBackgrnd changes
+    return () => clearTimeout(timer);
+  }, [collectionItem]);
+
+  if (!isVisible) {
+    return null;
+  }
   return (
     <div className="coll_container">
-      <img src={Image} alt="Collection"/>
+      <img src={collectionItem.image} alt="Collection" />
       <div className="coll_content">
         <div>
-        <h1>Classic winter collection</h1>
-        <p>Dignissim lacus, turpis ut suspendisse vel tellus. Turpis purus, gravida orci, fringilla a. Ac sed eu fringilla odio mi. Consequat pharetra at magna imperdiet cursus ac faucibus sit libero. Ultricies quam nunc, lorem sit lorem urna, pretium aliquam ut. In vel, quis donec dolor id in. Pulvinar commodo mollis diam sed facilisis at cursus imperdiet cursus ac faucibus sit faucibus sit libero.</p>
-        <a href="#">Shop collection</a>
+          <h1>{collectionItem.title}</h1>
+          <p>{collectionItem.text}</p>
+          <a href="/">{collectionItem.buttonText}</a>
         </div>
       </div>
     </div>

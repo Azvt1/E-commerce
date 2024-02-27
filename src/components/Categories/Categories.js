@@ -1,36 +1,18 @@
 import "./Categories.css";
-import menImage from "../../assets/img/men.png";
-import womenImage from "../../assets/img/women.png";
-import accessoriesImage from "../../assets/img/access.png";
 
-const Categories = () => {
-  const categoriesData = {
-    men: {
-      img_url: menImage,
-      link_url: "https://example.com/men",
-      text: "Shop for men",
-    },
-    women: {
-      img_url: womenImage,
-      link_url: "https://example.com/women",
-      text: "Shop for women",
-    },
-    accessories: {
-      img_url: accessoriesImage,
-      link_url: "https://example.com/accessories",
-      text: "Shop accessories",
-    },
-  };
-
+const Categories = ({ items }) => {
+  if (!items || items.length === 0) {
+    return null;
+  }
   return (
     <div className="cat_container">
-      {Object.keys(categoriesData).map((x) => (
+      {items.map((x, id) => (
         <div
-          key={x}
+          key={id}
           className="category"
-          style={{ backgroundImage: `url(${categoriesData[x].img_url})` }}
+          style={{ backgroundImage: `url(${x.image})` }}
         >
-          <a href={categoriesData[x].link_url}>{categoriesData[x].text}</a>
+          <a href={x.link_url}>{x.text}</a>
         </div>
       ))}
     </div>
