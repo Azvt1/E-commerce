@@ -15,7 +15,10 @@ import {
   Autoplay,
 } from "swiper/modules";
 
-export const Slider = ({ slides }) => {
+export const Slider = ({ testData }) => {
+  if (!testData || testData.length === 0) {
+    return null;
+  }
   return (
     <div className="Swiper-container">
       <Swiper
@@ -47,10 +50,10 @@ export const Slider = ({ slides }) => {
         navigation
         pagination={{ clickable: true }}
         onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={(swiper) => console.log("that was supposed to log swiper")}
       >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
+        {testData.map((slide, id) => (
+          <SwiperSlide key={id}>
             <div className="slide">
               <img src={slide.image} alt="cloth" className="slide-image" />
               <div className="slider-info">
