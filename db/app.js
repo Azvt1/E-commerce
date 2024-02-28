@@ -74,6 +74,20 @@ app.get("/kaira/newArrivals", (req, res) => {
     });
 });
 
+app.get("/kaira/sliderN2", (req, res) => {
+  db.collection("homepage")
+    .find({ type: "sliderN2" })
+    .toArray()
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information for slider #2" });
+    });
+});
+
 // POST REQUESTS
 // single item
 app.post("/kaira/insertOne", (req, res) => {
