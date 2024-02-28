@@ -8,7 +8,7 @@ import "./NewArrivals.css";
 import { useState, useEffect } from "react";
 
 import { Navigation, Pagination } from "swiper/modules";
-export default function NewArrivals({ newArrivals, sliderTitle }) {
+export default function NewArrivals({ newArrivals, sliderTitle, linkTitle }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function NewArrivals({ newArrivals, sliderTitle }) {
       <div className="swiper_title">
         <h1>{sliderTitle}</h1>
         <div className="view_products_link">
-          <a href="/">View all products</a>
+          <a href="/">{linkTitle}</a>
         </div>
       </div>
       <Swiper

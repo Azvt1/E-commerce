@@ -11,6 +11,7 @@ import womanOnChair from "../../assets/img/womanOnChair.jpeg";
 import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
 import Collection from "../../components/Collection/Collection";
 import NewArrivals from "../../components/NewArrivals/NewArrivals";
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 
 import { getItems } from "../../service/api";
 
@@ -91,6 +92,7 @@ export default function Homepage() {
         <NewArrivals
           newArrivals={newArrivals}
           sliderTitle={"OUR NEW ARRIVALS"}
+          linkTitle={"View all products"}
         />
       </div>
       <div className="collection_banner">
@@ -101,7 +103,11 @@ export default function Homepage() {
         <NewArrivals
           newArrivals={sliderN2}
           sliderTitle={"BEST SELLING ITEMS"}
+          linkTitle={"View all products"}
         />
+      </div>
+      <div className="player_container">
+        <VideoPlayer />
       </div>
     </div>
   );
