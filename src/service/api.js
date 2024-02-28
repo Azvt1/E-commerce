@@ -13,52 +13,15 @@
 //     });
 // }
 
-export async function getNewCollectionsItems() {
+// getItems function
+export async function getItems(type) {
   try {
-    const response = await fetch("http://localhost:3001/kaira/newCollections");
+    const response = await fetch(`http://localhost:3001/kaira/${type}`);
     if (!response.ok) {
       throw new Error("Network response was NOT ok");
     }
     return await response.json();
   } catch (error) {
     console.error("Error fetching new Collections: ", error);
-  }
-}
-
-export async function getCategoriesItems() {
-  try {
-    const response = await fetch("http://localhost:3001/kaira/categories");
-    if (!response.ok) {
-      throw new Error("Network response was NOT ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching the data: ", error);
-  }
-}
-
-export async function getCollectionOnBgrnd() {
-  try {
-    const response = await fetch(
-      "http://localhost:3001/kaira/collectionBackgrnd"
-    );
-    if (!response.ok) {
-      throw new Error("Network response was NOT ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching new Collections: ", error);
-  }
-}
-
-export async function getNewArrivals() {
-  try {
-    const response = await fetch("http://localhost:3001/kaira/newArrivals");
-    if (!response.ok) {
-      throw new Error("Network response was NOT ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching new arrivals", error);
   }
 }
