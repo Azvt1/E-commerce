@@ -19,6 +19,7 @@ export default function Homepage() {
   const [categoriesItems, setCategoriesItems] = useState([]);
   const [collectionBgrnd, setCollectionBgrnd] = useState([]);
   const [newArrivals, setNewArrivals] = useState([]);
+  const [sliderN2, setSliderN2] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -53,12 +54,22 @@ export default function Homepage() {
     getItems("newArrivals")
       .then((data) => {
         setNewArrivals(data);
+      })
+      .catch((error) => {
+        console.error("Could not fetch the new arrivals", error);
+      });
+
+    getItems("sliderN2")
+      .then((data) => {
+        setSliderN2(data);
         setIsLoading(false);
       })
       .catch((error) => {
         console.error("Could not fetch the new arrivals", error);
       });
   }, []);
+
+  console.log(sliderN2);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -77,14 +88,20 @@ export default function Homepage() {
         </div>
       </div>
       <div className="new_arrivals_banner">
-        <NewArrivals newArrivals={newArrivals} />
+        <NewArrivals
+          newArrivals={newArrivals}
+          sliderTitle={"OUR NEW ARRIVALS"}
+        />
       </div>
       <div className="collection_banner">
         <Collection collWBackgrnd={collectionBgrnd} />
         <h1>Collection</h1>
       </div>
       <div className="new_arrivals_banner">
-        <NewArrivals newArrivals={newArrivals} />
+        <NewArrivals
+          newArrivals={sliderN2}
+          sliderTitle={"BEST SELLING ITEMS"}
+        />
       </div>
     </div>
   );
