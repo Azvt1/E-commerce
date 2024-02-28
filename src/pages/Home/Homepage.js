@@ -12,12 +12,7 @@ import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
 import Collection from "../../components/Collection/Collection";
 import NewArrivals from "../../components/NewArrivals/NewArrivals";
 
-import {
-  getNewCollectionsItems,
-  getCategoriesItems,
-  getCollectionOnBgrnd,
-  getNewArrivals,
-} from "../../service/api";
+import { getItems } from "../../service/api";
 
 export default function Homepage() {
   const [newCollectionsItems, setNewCollectionItems] = useState([]);
@@ -28,7 +23,7 @@ export default function Homepage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getNewCollectionsItems()
+    getItems("newCollections")
       .then((data) => {
         setNewCollectionItems(data);
       })
@@ -36,7 +31,7 @@ export default function Homepage() {
         console.error("There was an error:", error);
       });
 
-    getCategoriesItems()
+    getItems("categories")
       .then((data) => {
         setCategoriesItems(data);
       })
@@ -44,7 +39,7 @@ export default function Homepage() {
         console.error("Could not fetch the categories", error);
       });
 
-    getCollectionOnBgrnd()
+    getItems("collectionBackgrnd")
       .then((data) => {
         setCollectionBgrnd(data);
       })
@@ -55,7 +50,7 @@ export default function Homepage() {
         );
       });
 
-    getNewArrivals()
+    getItems("newArrivals")
       .then((data) => {
         setNewArrivals(data);
         setIsLoading(false);
@@ -80,6 +75,9 @@ export default function Homepage() {
           <ServiceCards />
           <Categories items={categoriesItems} />
         </div>
+      </div>
+      <div className="new_arrivals_banner">
+        <NewArrivals newArrivals={newArrivals} />
       </div>
       <div className="collection_banner">
         <Collection collWBackgrnd={collectionBgrnd} />
