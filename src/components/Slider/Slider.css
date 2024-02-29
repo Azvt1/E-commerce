@@ -66,3 +66,29 @@ a:hover {
   text-decoration: underline;
   color: #83c5be;
 }
+
+/* 2 slider */
+
+.slide2 {
+  display: flex;
+  height: 100%;
+}
+
+.slider-info2 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.description {
+  margin-bottom: auto;
+}
+
+.slide2 h2 {
+  font-weight: normal;
+}
+
+.topic {
+  margin-top: auto;
+}
