@@ -35,3 +35,17 @@
   background-color: #fff;
   padding-bottom: 100px;
 }
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.text_slider {
+  margin-top: 100px;
+}
+.slider_title {
+  text-align: center;
+}

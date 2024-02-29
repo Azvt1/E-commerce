@@ -88,6 +88,19 @@ app.get("/kaira/sliderN2", (req, res) => {
     });
 });
 
+app.get("/kaira/videoPlayer", (req, res) => {
+  db.collection("homepage")
+    .findOne({ type: "videoPlayer" })
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about video slider" });
+    });
+});
+
 // POST REQUESTS
 // single item
 app.post("/kaira/insertOne", (req, res) => {

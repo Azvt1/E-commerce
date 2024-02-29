@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 
 import Categories from "../../components/Categories/Categories";
 import ServiceCards from "../../components/ServiceCards/ServiceCards";
 import "./Homepage.css";
 import { Slider } from "../../components/Slider/Slider";
-import ladyInGlasses from "../../assets/img/LadyInGlasses.jpeg";
-import guyInJacket from "../../assets/img/guyInJacket.jpeg";
-import womanOnChair from "../../assets/img/womanOnChair.jpeg";
-import ladyInJeans from "../../assets/img/ladyInJeans.jpeg";
 import Collection from "../../components/Collection/Collection";
 import NewArrivals from "../../components/NewArrivals/NewArrivals";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
@@ -21,66 +17,51 @@ export default function Homepage() {
   const [collectionBgrnd, setCollectionBgrnd] = useState([]);
   const [newArrivals, setNewArrivals] = useState([]);
   const [sliderN2, setSliderN2] = useState([]);
+  const videoPlayerUrlRef = useRef(null);
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getItems("newCollections")
-      .then((data) => {
-        setNewCollectionItems(data);
-      })
+    Promise.all([
+      getItems("newCollections"),
+      getItems("categories"),
+      getItems("collectionBackgrnd"),
+      getItems("newArrivals"),
+      getItems("sliderN2"),
+      getItems("videoPlayer"),
+    ])
+      .then(
+        ([
+          newCollections,
+          categories,
+          collectionBgrnd,
+          newArrivals,
+          sliderN2,
+          videoPlayer,
+        ]) => {
+          setNewCollectionItems(newCollections);
+          setCategoriesItems(categories);
+          setCollectionBgrnd(collectionBgrnd);
+          setNewArrivals(newArrivals);
+          setSliderN2(sliderN2);
+          videoPlayerUrlRef.current = videoPlayer.url;
+          setIsLoading(false);
+        }
+      )
       .catch((error) => {
-        console.error("There was an error:", error);
-      });
-
-    getItems("categories")
-      .then((data) => {
-        setCategoriesItems(data);
-      })
-      .catch((error) => {
-        console.error("Could not fetch the categories", error);
-      });
-
-    getItems("collectionBackgrnd")
-      .then((data) => {
-        setCollectionBgrnd(data);
-      })
-      .catch((error) => {
-        console.error(
-          "Could not fetch the collection with background image",
-          error
-        );
-      });
-
-    getItems("newArrivals")
-      .then((data) => {
-        setNewArrivals(data);
-      })
-      .catch((error) => {
-        console.error("Could not fetch the new arrivals", error);
-      });
-
-    getItems("sliderN2")
-      .then((data) => {
-        setSliderN2(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Could not fetch the new arrivals", error);
+        console.error("Error fetching data:", error);
       });
   }, []);
 
-  console.log(sliderN2);
-
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
   return (
     <div>
       <Navbar />
       <div className="swiper">
         <h1>New Collections</h1>
-        <Slider testData={newCollectionsItems} />
+        <Slider testData={newCollectionsItems} withImages={true} />
       </div>
       <div className="main_container">
         <div className="container">
@@ -107,7 +88,41 @@ export default function Homepage() {
         />
       </div>
       <div className="player_container">
-        <VideoPlayer />
+        <VideoPlayer
+          url={videoPlayerUrlRef.current}
+          width={1080}
+          height={640}
+          controls={true}
+        />
+      </div>
+
+      <div className="text_slider">
+        <h3 className="slider_title">WE LOVE GOOD COMPLIMENT</h3>
+        <Slider
+          testData={[
+            {
+              description:
+                "“More than expected crazy soft, flexible and best fitted white simple denim shirt.”",
+              topic: "uptop",
+            },
+            {
+              description:
+                "“Best fitted white denim shirt more than expected crazy soft, flexible and b”",
+              topic: "casual",
+            },
+            {
+              description:
+                "“Best fitted white denim shirt more white denim than expected flexible crazy soft.”",
+              topic: "denim caze",
+            },
+            {
+              description:
+                "“Wonderful shop, great design, prices are so comfortable“",
+              topic: "exotic",
+            },
+          ]}
+          withImages={false}
+        ></Slider>
       </div>
     </div>
   );
