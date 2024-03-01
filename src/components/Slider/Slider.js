@@ -70,7 +70,7 @@ export const Slider = ({ testData, withImages }) => {
     );
   } else {
     return (
-      <div className="Swiper-container">
+      <div className="Swiper-container2">
         <Swiper
           className="mySwiper"
           loop={true}
