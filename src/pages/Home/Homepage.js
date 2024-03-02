@@ -11,6 +11,7 @@ import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 
 import { getItems } from "../../service/api";
 import SignUp from "../../components/SignUp/SignUp";
+import Footer from "../../components/Footer/Footer";
 
 export default function Homepage() {
   const [newCollectionsItems, setNewCollectionItems] = useState([]);
@@ -125,9 +126,8 @@ export default function Homepage() {
           withImages={false}
         ></Slider>
       </div>
-      <div>
-        <SignUp />
-      </div>
+      <SignUp />
+      <Footer />
     </div>
   );
 }
