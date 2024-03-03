@@ -90,9 +90,7 @@ export const Slider = ({ testData, withImages }) => {
             <SwiperSlide key={id}>
               <div className="slide2">
                 <div className="slider-info2">
-                  <h2 className="description2">
-                    {slide.description.toUpperCase()}
-                  </h2>
+                  <h2 className="description2">{slide.text.toUpperCase()}</h2>
                   <div className="topic2">
                     <span>{slide.topic}</span>
                   </div>

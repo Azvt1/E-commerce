@@ -101,6 +101,34 @@ app.get("/kaira/videoPlayer", (req, res) => {
     });
 });
 
+app.get("/kaira/footer", (req, res) => {
+  db.collection("homepage")
+    .find({ type: "footer" })
+    .toArray()
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about complements" });
+    });
+});
+
+app.get("/kaira/complements", (req, res) => {
+  db.collection("homepage")
+    .find({ type: "complements" })
+    .toArray()
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about complements" });
+    });
+});
+
 // POST REQUESTS
 // single item
 app.post("/kaira/insertOne", (req, res) => {

@@ -13,28 +13,20 @@ import {
   FaCcPaypal,
 } from "react-icons/fa";
 
-import guyInAHat from "../../assets/img/guyInAHat.jpeg";
-
 import "./Footer.css";
 
-const Footer = () => {
-  const [photosList, setPhotosList] = useState([
-    { image: guyInAHat },
-    { image: guyInAHat },
-    { image: guyInAHat },
-    { image: guyInAHat },
-    { image: guyInAHat },
-  ]);
-
+const Footer = ({ footerImages }) => {
   return (
     <div className="footer_main_container">
       <h2 className="footer_title">FOLLOW US ON INSTAGRAM</h2>
       <div className="footer_container">
         <div className="pictures_container">
-          {photosList.map((photo, index) => (
-            <div key={index} className="picture_container">
-              <img src={photo.image} alt={`image ${index}`} />
-              <FaInstagram className="instagram_icon" />
+          {footerImages.map((photo) => (
+            <div key={photo.id} className="picture_container">
+              <a href="/">
+                <img src={photo.image} alt="images" />
+                <FaInstagram className="instagram_icon" />
+              </a>
             </div>
           ))}
         </div>
