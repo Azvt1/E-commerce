@@ -64,7 +64,12 @@ export default function Homepage() {
   }, []);
 
   if (isLoading) {
-    return <div className="loading">Loading...</div>;
+    return (
+      <div>
+        <Navbar />
+        <div className="loading">Loading...</div>
+      </div>
+    );
   }
   return (
     <div>
