@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.item {
+  background: #f0ebe1;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+}
+
+.title {
+  color: #85682b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  color: #8b7f75;
+  overflow: hidden;
+  max-height: 0;
+  transform: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.contect.show {
+  height: auto;
+  max-height: 9999px;
+  transform: all 0.5s cubic-bezier(0, 1, 0, 1);
+}

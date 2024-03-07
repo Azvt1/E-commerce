@@ -1,0 +1,25 @@
+.itemList_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.whole_itemList_container {
+  display: flex;
+  flex-direction: column;
+  height: 690px;
+  width: 940px;
+}
+
+.itemList_row {
+  display: flex;
+  gap: 20px;
+}
+
+.no_items_container {
+  height: 690px;
+  width: 940px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

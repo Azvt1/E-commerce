@@ -1,0 +1,8 @@
+.shopItems_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.shopItems_title {
+  margin-bottom: 10px;
+}
