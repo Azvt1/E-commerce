@@ -8,7 +8,26 @@ export default function Filters({
   wholeItemsList,
   sizes,
 }) {
-  let updatedFilters = [];
+  const [updatedFilters, setUpdatedFilters] = useState([]);
+
+  const updateFilters = (newFilter) => {
+    const filterExists = updatedFilters.some(
+      (filter) =>
+        filter.type === newFilter.type && filter.value === newFilter.value
+    );
+
+    if (filterExists) {
+      setUpdatedFilters((prevFilters) =>
+        prevFilters.filter(
+          (filter) =>
+            filter.type !== newFilter.type && filter.value !== newFilter.type
+        )
+      );
+    } else {
+      setUpdatedFilters((prevFilters) => [...prevFilters, newFilter]);
+    }
+  };
+
   return (
     <div className="main_filters_container">
       <h3 className="filters_title">
@@ -20,6 +39,7 @@ export default function Filters({
           itemList={wholeItemsList}
           setItemList={setItemList}
           filters={updatedFilters}
+          updateFilters={updateFilters}
         />
         <Collapsible
           title={"Size"}
@@ -27,6 +47,7 @@ export default function Filters({
           itemList={wholeItemsList}
           setItemList={setItemList}
           filters={updatedFilters}
+          updateFilters={updateFilters}
         />
         <Collapsible
           title={"Price"}
@@ -34,6 +55,7 @@ export default function Filters({
           itemList={wholeItemsList}
           setItemList={setItemList}
           filters={updatedFilters}
+          updateFilters={updateFilters}
         />
       </h3>
     </div>

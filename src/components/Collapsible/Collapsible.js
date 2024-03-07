@@ -6,6 +6,7 @@ export default function Collapsible({
   itemList,
   setItemList,
   filters,
+  updateFilters,
 }) {
   const [isSelected, setIsSelected] = useState(false);
   const [buttonSelected, setButtonSelected] = useState(false);
@@ -21,7 +22,10 @@ export default function Collapsible({
 
   //button type can be: Colors, Size, Price
 
-  const clickHandler = (buttonType, color = "", id) => {};
+  const clickHandler = (buttonType, color = "", id) => {
+    console.log(filters);
+    updateFilters({ type: buttonType, value: color });
+  };
 
   return (
     <div className="collapsible_container">
