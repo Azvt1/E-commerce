@@ -23,10 +23,19 @@ export default function Filters({
             filter.type !== newFilter.type && filter.value !== newFilter.type
         )
       );
+    } else if (
+      updatedFilters.some((filter) => newFilter.type === filter.type)
+    ) {
+      setUpdatedFilters((prevFilters) =>
+        prevFilters.filter((filter) => filter.type !== newFilter.type)
+      );
+      setUpdatedFilters((prevFilters) => [...prevFilters, newFilter]);
     } else {
       setUpdatedFilters((prevFilters) => [...prevFilters, newFilter]);
     }
   };
+
+  console.log(updatedFilters);
 
   return (
     <div className="main_filters_container">

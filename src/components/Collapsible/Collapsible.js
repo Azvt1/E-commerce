@@ -22,9 +22,9 @@ export default function Collapsible({
 
   //button type can be: Colors, Size, Price
 
-  const clickHandler = (buttonType, color = "", id) => {
+  const clickHandler = (buttonType, value = "", id) => {
     console.log(filters);
-    updateFilters({ type: buttonType, value: color });
+    updateFilters({ type: buttonType, value: value });
   };
 
   return (
