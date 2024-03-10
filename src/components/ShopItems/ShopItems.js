@@ -10,7 +10,13 @@ export default function ShopItems({
   currentItems,
   itemsPerPage,
   setCurrentPage,
+  currentPage,
 }) {
+  if (!itemList || itemList.length === 0) {
+    return <div className="no_items_container">No such products</div>;
+  }
+  console.log(firstItemIndex);
+  console.log(lastItemIndex);
   return (
     <div className="shopItems_container">
       <h4 className="shopItems_title">
@@ -22,6 +28,7 @@ export default function ShopItems({
         totalItems={itemList.length}
         itemsPerPage={itemsPerPage}
         setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
       />
     </div>
   );

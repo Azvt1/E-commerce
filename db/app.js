@@ -168,6 +168,19 @@ app.get("/kaira/shopItems/sizes", (req, res) => {
         .json({ error: "Could not fetch information about colors" });
     });
 });
+app.get("/kaira/shopItems/filteredItems", (req, res) => {
+  db.collection("shopItems")
+    .find({ size: "X" })
+    .toArray()
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about colors" });
+    });
+});
 
 // POST REQUESTS
 // single item

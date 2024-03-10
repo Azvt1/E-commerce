@@ -13,20 +13,37 @@ export default function Collapsible({
 
   const unsetSelectedClass = (buttons, id) => {
     for (let button of buttons) {
-      if (parseInt(button.id) !== id) {
-        button.selected = false;
-        button.className = "collapse_content show";
-      }
+      button.selected = false;
+      button.className = "collapse_content show";
     }
   };
 
   //button type can be: Colors, Size, Price
+  const buttons = document.getElementsByName(title);
+
+  // color buttons
 
   const clickHandler = (buttonType, value = "", id) => {
-    console.log(filters);
     updateFilters({ type: buttonType, value: value });
-  };
+    for (const button of buttons) {
+      // colors section
+      if (parseInt(button.id) === id && !button.selected) {
+        unsetSelectedClass(buttons, id);
+        button.className = "collapse_content show selected";
+        button.selected = true;
+        break;
+      } else if (parseInt(button.id) === id && button.selected) {
+        unsetSelectedClass(buttons, id);
+        button.className = "collapse_content show";
+        button.selected = false;
 
+        break;
+      }
+    }
+  };
+  if (!content || content.length === 0) {
+    return <div>Couldn't fetch information about filter</div>;
+  }
   return (
     <div className="collapsible_container">
       <div className={`collapse_item ${isSelected ? "selected" : ""}`}>

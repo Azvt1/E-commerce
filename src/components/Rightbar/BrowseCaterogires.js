@@ -8,7 +8,6 @@ export default function BrowseCategories({
   wholeItemListRef,
 }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
-
   let updatedItemsList = [];
 
   const clickHandler = (selectedCategory) => {
@@ -27,25 +26,25 @@ export default function BrowseCategories({
   return (
     <div className="browse_categories_container">
       <button
-        className={selectedCategory === "all" ? "active" : ""}
+        className={selectedCategory === "all" ? "Active" : ""}
         onClick={() => clickHandler("all")}
       >
         All
       </button>
       <button
-        className={selectedCategory === "women" ? "active" : ""}
+        className={selectedCategory === "women" ? "Active" : ""}
         onClick={() => clickHandler("women")}
       >
         Women
       </button>
       <button
-        className={selectedCategory === "men" ? "active" : ""}
+        className={selectedCategory === "men" ? "Active" : ""}
         onClick={() => clickHandler("men")}
       >
         Man
       </button>
       <button
-        className={selectedCategory === "accessories" ? "active" : ""}
+        className={selectedCategory === "accessories" ? "Active" : ""}
         onClick={() => clickHandler("accessories")}
       >
         Accessories

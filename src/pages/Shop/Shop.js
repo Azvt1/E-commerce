@@ -3,11 +3,12 @@ import Navbar from "../../components/Navbar/Navbar";
 
 import clothesHanging from "../../assets/img/clothesHangingFinal.jpeg";
 import ShopItems from "../../components/ShopItems/ShopItems";
-import Pagination from "../../components/Pagination/Pagination";
 import Rightbar from "../../components/Rightbar/Rightbar";
 import "./Shop.css";
 import { useEffect, useRef, useState } from "react";
 import { getItems } from "../../service/api";
+import SignUp from "../../components/SignUp/SignUp";
+import Footer from "../../components/Footer/Footer";
 const Shop = () => {
   const [itemList, setItemList] = useState(null);
   const [colorsList, setColorsList] = useState([]);
@@ -16,24 +17,39 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentItems, setCurrentItems] = useState([]);
   const [error, setError] = useState(null);
+  const [footerImages, setFooterImages] = useState([]);
+
+  let lastItemIndex = currentPage * itemsPerPage;
+  let firstItemIndex = lastItemIndex - itemsPerPage;
   useEffect(() => {
     Promise.all([
       getItems("shopItems"),
       getItems("shopItems/colors"),
       getItems("shopItems/sizes"),
+      getItems("footer"),
     ])
-      .then(([items, colors, sizes]) => {
+      .then(([items, colors, sizes, footerImages]) => {
         setItemList(items);
         setColorsList(colors);
         setSizes(sizes);
         wholeItemListRef.current = items;
+        setFooterImages(footerImages);
         setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
+  useEffect(() => {
+    lastItemIndex = currentPage * itemsPerPage;
+    firstItemIndex = lastItemIndex - itemsPerPage;
+    if (itemList && itemList.length > 0) {
+      setCurrentItems(itemList.slice(firstItemIndex, lastItemIndex));
+    }
+  }, [currentPage, itemsPerPage, itemList]);
 
   if (isLoading) {
     return (
@@ -48,13 +64,6 @@ const Shop = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
-  let currentItems = [];
-  if (itemList && itemList.length > 0) {
-    currentItems = itemList.slice(firstItemIndex, lastItemIndex);
-  }
-
   return (
     <div>
       <Navbar />
@@ -67,6 +76,7 @@ const Shop = () => {
           itemList={itemList}
           itemsPerPage={itemsPerPage}
           setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
         />
         <Rightbar
           itemList={itemList}
@@ -76,6 +86,9 @@ const Shop = () => {
           sizes={sizes}
         />
       </div>
+
+      <SignUp />
+      <Footer footerImages={footerImages} />
     </div>
   );
 };

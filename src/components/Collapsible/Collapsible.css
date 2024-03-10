@@ -35,7 +35,9 @@ collapsible_container {
 }
 
 .collapse_content.show.selected {
-  border-color: blue;
+  border-color: red;
+  color: red;
+  opacity: 0.5;
 }
 
 .collapsible_container ul {
@@ -46,8 +48,9 @@ collapsible_container {
   margin: 5px 0;
   width: 100%;
   text-align: left;
-  padding: 5px;
+  padding: 10px;
   border-radius: 0.5rem;
+  text-transform: capitalize;
 }
 
 .list {
