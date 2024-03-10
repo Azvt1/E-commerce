@@ -129,6 +129,59 @@ app.get("/kaira/complements", (req, res) => {
     });
 });
 
+app.get("/kaira/shopItems", (req, res) => {
+  db.collection("shopItems")
+    .find()
+    .toArray()
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about complements" });
+    });
+});
+
+app.get("/kaira/shopItems/colors", (req, res) => {
+  db.collection("shopItems")
+    .distinct("color")
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about colors" });
+    });
+});
+
+app.get("/kaira/shopItems/sizes", (req, res) => {
+  db.collection("shopItems")
+    .distinct("size")
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about colors" });
+    });
+});
+app.get("/kaira/shopItems/filteredItems", (req, res) => {
+  db.collection("shopItems")
+    .find({ size: "X" })
+    .toArray()
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Could not fetch information about colors" });
+    });
+});
+
 // POST REQUESTS
 // single item
 app.post("/kaira/insertOne", (req, res) => {
@@ -153,5 +206,65 @@ app.post("/kaira/insertMany", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ err: err });
+    });
+});
+
+app.post("/kaira/insertShopItems", (req, res) => {
+  const items = req.body;
+  db.collection("shopItems")
+    .insertMany(items)
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: err });
+    });
+});
+
+// put requests
+
+app.put("/kaira/updateShopItems", (req, res) => {
+  const updateData = req.body.updateData;
+  const filter = req.body.filter;
+
+  db.collection("shopItems")
+    .updateMany(filter, { $rename: updateData })
+    .then((results) => {
+      res.status(200).json(results);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: err });
+      console.err("Couldn't update", err);
+    });
+});
+
+app.put("/kaira/addAttributeShopitems", (req, res) => {
+  const updateData = req.body.size;
+  const filter = req.body.filter;
+  db.collection("shopItems")
+    .updateOne(filter, { $set: { size: updateData } })
+    .then((results) => {
+      res.status(200).json(results);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: err });
+      console.err("Couldn't insert a property", err);
+    });
+});
+
+// delete requests
+
+app.delete("/kaira/removeAttributeByPrice", (req, res) => {
+  const itemPrice = 95;
+  db.collection("shopItems")
+    .updateOne({ price: itemPrice }, { $unset: { updateData: "" } })
+    .then((result) => {
+      res
+        .status(200)
+        .json({ message: "Property deleted successfully", result: result });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Couldn't delete property", err: err });
+      console.error("Couldn't delete property", err);
     });
 });

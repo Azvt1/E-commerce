@@ -1,0 +1,13 @@
+.shop_item img {
+  width: 300px;
+  height: 300px;
+}
+
+.shop_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop_item p {
+  text-align: left;
+}
