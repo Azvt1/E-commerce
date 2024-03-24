@@ -50,8 +50,6 @@ export const Slider = ({ testData, withImages }) => {
           }}
           navigation
           pagination={{ clickable: true }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log("that was supposed to log swiper")}
         >
           {testData.map((slide, id) => (
             <SwiperSlide key={id}>
@@ -83,8 +81,6 @@ export const Slider = ({ testData, withImages }) => {
           //   disableOnInteraction: false,
           // }}
           pagination={{ clickable: true }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log("that was supposed to log swiper")}
         >
           {testData.map((slide, id) => (
             <SwiperSlide key={id}>
