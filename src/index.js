@@ -8,6 +8,6 @@ import ProtectedRoutes from "./protectedRoutes";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={AppRoutes} />
+    <App />
   </React.StrictMode>
 );
