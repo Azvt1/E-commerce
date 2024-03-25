@@ -23,6 +23,7 @@ const Shop = () => {
 
   let lastItemIndex = currentPage * itemsPerPage;
   let firstItemIndex = lastItemIndex - itemsPerPage;
+  console.log("ghey");
   useEffect(() => {
     Promise.all([
       getItems("shopItems"),
