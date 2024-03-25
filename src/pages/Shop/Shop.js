@@ -35,7 +35,6 @@ const Shop = () => {
         setSizes(uniqueSizes);
         setColorsList(uniqueColor);
         wholeItemListRef.current = data;
-        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching items", error);
       }
@@ -50,6 +49,7 @@ const Shop = () => {
     if (itemList && itemList.length > 0) {
       setCurrentItems(itemList.slice(firstItemIndex, lastItemIndex));
     }
+    setIsLoading(false);
   }, [currentPage, itemsPerPage, itemList]);
 
   if (isLoading) {

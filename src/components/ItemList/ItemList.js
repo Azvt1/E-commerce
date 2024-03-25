@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function ItemList({ list }) {
   // Filter out items with no image URLs
+  console.log(list);
   const itemsWithImages = list.filter((item) => item.images[0]?.url);
 
   const chunkArray = (array, size) => {
