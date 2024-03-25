@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="navbar_middle">
           <ul className={openMenu ? "open" : ""}>
             <li>
-              <NavLink to="/">HOME</NavLink>
+              <NavLink to="/home">HOME</NavLink>
             </li>
             <li>
               <NavLink to="/about">ABOUT</NavLink>
@@ -41,13 +41,16 @@ const Navbar = () => {
 
         <div className="navbar_right">
           <ul className={openMenu ? "open" : ""}>
-            <li>WISHLIST</li>
-            <li>CART</li>
             <li>
-              <img src={user} />
+              <NavLink to="/nopage">WISHLIST</NavLink>
             </li>
             <li>
-              <img src={searchIcon} />
+              <NavLink to="/smthelse">CART</NavLink>
+            </li>
+            <li>
+              <NavLink to="/smth">
+                <img src={user} />
+              </NavLink>
             </li>
             <li>
               <img src={burgerIcon} />
@@ -55,7 +58,6 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-      <div className="separator"></div>
     </div>
   );
 };

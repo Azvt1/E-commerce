@@ -9,7 +9,7 @@ import Register from "./pages/Register/Register";
 
 export const routes = [
   {
-    path: "/",
+    path: "/home",
     element: <Homepage />,
     name: "Home",
     isMenu: true,
@@ -40,9 +40,17 @@ export const routes = [
   },
 
   {
-    path: "*",
+    path: "/nopage",
     element: <Nopage />,
-    name: "Shop",
+    name: "Nopage",
+    isMenu: false,
+    isPrivate: false,
+  },
+
+  {
+    path: "/*",
+    element: <Login />,
+    name: "Login",
     isMenu: false,
     isPrivate: false,
   },
@@ -62,5 +70,3 @@ export const routes = [
     isPrivate: false,
   },
 ];
-
-export const AppRoutes = createBrowserRouter(routes);

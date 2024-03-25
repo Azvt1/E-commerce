@@ -1,10 +1,12 @@
 import Navbar from "../../components/Navbar/Navbar";
-
+import "./Nopage.css";
 const Nopage = () => {
   return (
     <div>
       <Navbar />
-      page was not found
+      <div className="no-page-container">
+        <h1>Page was not found</h1>
+      </div>
     </div>
   );
 };

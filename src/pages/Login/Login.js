@@ -6,6 +6,9 @@ import { FaLock } from "react-icons/fa";
 import "./Login.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { AuthData } from "../../auth/authWrapper";
+
 const Login = () => {
   const [values, setValues] = useState({
     email: "",
@@ -16,6 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
   const emailPattern = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
 
+  const { login } = AuthData();
   useEffect(() => {
     fetch("http://localhost:3000/user")
       .then((response) => response.json())
@@ -58,32 +62,19 @@ const Login = () => {
 
     if (isValid) {
       try {
-        const response = await fetch("http://localhost:3000/user/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: values.email,
-            password: values.password,
-          }),
-        });
-
-        response.json().then((data) => {
-          if (data.success) {
-            if (response.ok) {
-              console.log("Successfuly logged in");
-              navigate("/");
-            } else {
-              setErrors({ ...errors, password: "Invalid password" }); // setPassword error
-              console.error("Incorrect password", response.statusText);
-            }
-          } else {
-            setErrors({ ...errors, password: data.status });
-          }
-        });
+        const result = await login(values.email, values.password);
+        console.log(result);
+        if (result) {
+          console.log("all giid");
+          navigate("/home");
+        } else {
+          setErrors((prevErros) => ({
+            ...prevErros,
+            password: "Incorrect credentials",
+          }));
+        }
       } catch (error) {
-        console.error("Errors loging in: ", error);
+        setErrors({ password: error.message });
       }
     }
   };
