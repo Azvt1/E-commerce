@@ -10,7 +10,7 @@ import { getItems } from "../../service/api";
 import SignUp from "../../components/SignUp/SignUp";
 import Footer from "../../components/Footer/Footer";
 const Shop = () => {
-  const [itemList, setItemList] = useState(null);
+  const [itemList, setItemList] = useState([]);
   const [colorsList, setColorsList] = useState([]);
   const [sizes, setSizes] = useState([]);
   const wholeItemListRef = useRef(null);
@@ -23,25 +23,25 @@ const Shop = () => {
 
   let lastItemIndex = currentPage * itemsPerPage;
   let firstItemIndex = lastItemIndex - itemsPerPage;
-  console.log("ghey");
+
   useEffect(() => {
-    Promise.all([
-      getItems("shopItems"),
-      getItems("shopItems/colors"),
-      getItems("shopItems/sizes"),
-      getItems("footer"),
-    ])
-      .then(([items, colors, sizes, footerImages]) => {
-        setItemList(items);
-        setColorsList(colors);
-        setSizes(sizes);
-        wholeItemListRef.current = items;
-        setFooterImages(footerImages);
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/item");
+        const data = await response.json();
+        setItemList(data);
+        const uniqueColor = [...new Set(data.map((item) => item.color))];
+        const uniqueSizes = [...new Set(data.flatMap((item) => item.size))];
+        setSizes(uniqueSizes);
+        setColorsList(uniqueColor);
+        wholeItemListRef.current = data;
         setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      } catch (error) {
+        console.error("Error fetching items", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const Shop = () => {
       </div>
 
       <SignUp />
-      <Footer footerImages={footerImages} />
+      {/* <Footer footerImages={footerImages} /> */}
     </div>
   );
 };

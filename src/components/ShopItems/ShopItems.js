@@ -15,8 +15,8 @@ export default function ShopItems({
   if (!itemList || itemList.length === 0) {
     return <div className="no_items_container">No such products</div>;
   }
-  console.log(firstItemIndex);
-  console.log(lastItemIndex);
+
+  console.log(itemList);
   return (
     <div className="shopItems_container">
       <h4 className="shopItems_title">
