@@ -16,7 +16,6 @@ export default function ShopItems({
     return <div className="no_items_container">No such products</div>;
   }
 
-  console.log(itemList);
   return (
     <div className="shopItems_container">
       <h4 className="shopItems_title">
