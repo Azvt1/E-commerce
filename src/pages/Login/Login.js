@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthData } from "../../auth/authWrapper";
 
 const Login = () => {
+  localStorage.setItem("isAuthenticated", false);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -65,8 +66,13 @@ const Login = () => {
         const result = await login(values.email, values.password);
         console.log(result);
         if (result) {
-          console.log("all giid");
-          navigate("/home");
+          localStorage.setItem("isAuthenticated", true);
+          users.map((user) => {
+            if (user.email === values.email) {
+              localStorage.setItem("userId", user.id);
+            }
+          });
+          navigate("/");
         } else {
           setErrors((prevErros) => ({
             ...prevErros,

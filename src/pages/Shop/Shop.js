@@ -48,11 +48,19 @@ const Shop = () => {
     firstItemIndex = lastItemIndex - itemsPerPage;
     if (itemList && itemList.length > 0) {
       setCurrentItems(itemList.slice(firstItemIndex, lastItemIndex));
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }, [currentPage, itemsPerPage, itemList]);
 
   if (isLoading) {
+    if (itemList.length === 0) {
+      return (
+        <div>
+          <Navbar />
+          <h2 className="no-items">Sorry, but there is no items</h2>
+        </div>
+      );
+    }
     return (
       <div>
         <Navbar />

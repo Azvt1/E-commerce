@@ -58,7 +58,7 @@ export default function Collapsible({
         </div>
         <ul>
           {content.map((item, id) => (
-            <li className={`list  ${isSelected ? "" : "hide"}`}>
+            <li className={`list  ${isSelected ? "" : "hide"}`} key={id}>
               <button
                 name={title}
                 id={id}

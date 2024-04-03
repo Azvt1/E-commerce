@@ -1,0 +1,25 @@
+.wishlist-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+  margin-top: 130px;
+  margin-bottom: 130px;
+}
+
+.wishlist-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.unitPrice {
+  flex-grow: 0.55;
+}
+
+.wishlist-items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

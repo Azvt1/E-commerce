@@ -6,10 +6,12 @@ import Shop from "./pages/Shop/Shop";
 import ItemPage from "./pages/ItemPage/ItemPage";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Wishlist from "./pages/WishList/Wishlist";
+import { Cart } from "./pages/Cart/Cart";
 
 export const routes = [
   {
-    path: "/home",
+    path: "/",
     element: <Homepage />,
     name: "Home",
     isMenu: true,
@@ -69,4 +71,20 @@ export const routes = [
     isMenu: false,
     isPrivate: false,
   },
+
+  {
+    path: "/wishlist",
+    element: <Wishlist />,
+    name: "Wishist",
+    isMenu: true,
+    isPrivate: false,
+  },
+
+  {
+    path: "/cart",
+    element: <Cart />,
+    name: "Cart",
+    isMenu: true,
+    isPrivate: false
+  }
 ];

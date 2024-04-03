@@ -27,6 +27,7 @@ export const AuthWrapper = () => {
       if (data.success) {
         console.log("success");
         setUser({ email: email, isAuthenticated: true });
+
         return true;
       } else {
         return false;
@@ -41,8 +42,9 @@ export const AuthWrapper = () => {
     setUser({ ...user, isAuthenticated: false });
   };
 
+  const isAuth = Boolean(localStorage.getItem("isAuthenticated"));
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ isAuth, login, logout }}>
       <RenderRoutes />
     </AuthContext.Provider>
   );

@@ -92,9 +92,15 @@
   color: #fff;
 }
 
+.wishlist-status-message {
+  margin: 0px 2px 10px 10px;
+  color: chocolate;
+}
+
 .add_to_cart_container {
   display: flex;
   margin-top: 10px;
+  margin-bottom: 10px;
   gap: 10px;
 }
 
