@@ -20,23 +20,56 @@ export default function ItemPage(props) {
   const [selectedSize, setSelectedSize] = useState(null);
   const [footerImages, setFooterImages] = useState([]);
 
-  useEffect(() => {
-    Promise.all([getItem(id), getItems("footer")])
-      .then(([itemInformation, footerImages]) => {
-        setItem(itemInformation);
-        if (itemInformation.image.length > 0) {
-          setSelectedImage(itemInformation.image[0]);
-        }
-        setFooterImages(footerImages);
-      })
-      .catch((error) => {
-        console.error("Error fetching information about signle item", error);
-      });
-  }, []);
+  const [wishListStatusMessage, setWishListStatusMessage] = useState("");
+
+  console.log(id);
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
   };
+
+  const addToCart = async () => {
+    const response = await fetch(`http://localhost:3000/item/favorite/${id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: localStorage.getItem("userId"),
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      if (data.success) {
+        setWishListStatusMessage("Item was successfully added");
+      } else {
+        setWishListStatusMessage("Item is already in the wishlist cart");
+        console.log("already in the wishlist");
+      }
+    } else {
+      console.log("Failed to add item to a wishlist cart");
+    }
+  };
+
+  useEffect(() => {
+    const fetchItem = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/item/${id}`);
+        const data = await response.json();
+        setItem(data);
+        console.log(data);
+        if (data.images.length > 0) {
+          setSelectedImage(data.images[0]);
+        }
+      } catch (error) {
+        console.log("Error fetching information about single item", error);
+      }
+    };
+
+    fetchItem();
+  }, []);
 
   if (!item) {
     return <div className="loading">Loading</div>;
@@ -48,13 +81,13 @@ export default function ItemPage(props) {
       <div className="itemPage_container">
         <div className="images_container">
           <div className="small_images_container">
-            {item.image.map((image, id) => {
+            {item.images.map((image, id) => {
               return (
                 <img
                   className={
                     selectedImage === image ? "small_image_selected" : ""
                   }
-                  src={image}
+                  src={`http://${image.url}`}
                   alt="imag"
                   key={id}
                   onClick={() => {
@@ -65,7 +98,7 @@ export default function ItemPage(props) {
             })}
           </div>
           <div className="big_image_container">
-            <img src={selectedImage} alt="imag" />
+            <img src={`http://${selectedImage.url}`} alt="imag" />
           </div>
         </div>
         <div className="item_description_container">
@@ -91,8 +124,14 @@ export default function ItemPage(props) {
 
           <div className="add_to_cart_container">
             <button className="add_to_cart_button">ADD TO CART</button>
-            <button className="like_button">{<FaHeart />}</button>
+            <button className="like_button" onClick={addToCart}>
+              {<FaHeart />}
+            </button>
           </div>
+
+          <span className="wishlist-status-message">
+            {wishListStatusMessage}
+          </span>
           <hr></hr>
           <p className="footer_of_description">
             Category: {item.category}, {item.color}
@@ -101,7 +140,7 @@ export default function ItemPage(props) {
       </div>
 
       <SignUp />
-      <Footer footerImages={footerImages} />
+      {/* <Footer footerImages={footerImages} /> */}
     </div>
   );
 }

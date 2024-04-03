@@ -6,6 +6,8 @@ import Shop from "./pages/Shop/Shop";
 import ItemPage from "./pages/ItemPage/ItemPage";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Wishlist from "./pages/WishList/Wishlist";
+import { Cart } from "./pages/Cart/Cart";
 
 export const routes = [
   {
@@ -40,9 +42,17 @@ export const routes = [
   },
 
   {
-    path: "*",
+    path: "/nopage",
     element: <Nopage />,
-    name: "Shop",
+    name: "Nopage",
+    isMenu: false,
+    isPrivate: false,
+  },
+
+  {
+    path: "/*",
+    element: <Login />,
+    name: "Login",
     isMenu: false,
     isPrivate: false,
   },
@@ -61,6 +71,20 @@ export const routes = [
     isMenu: false,
     isPrivate: false,
   },
-];
 
-export const AppRoutes = createBrowserRouter(routes);
+  {
+    path: "/wishlist",
+    element: <Wishlist />,
+    name: "Wishist",
+    isMenu: true,
+    isPrivate: false,
+  },
+
+  {
+    path: "/cart",
+    element: <Cart />,
+    name: "Cart",
+    isMenu: true,
+    isPrivate: false
+  }
+];

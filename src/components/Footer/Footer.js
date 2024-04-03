@@ -15,7 +15,10 @@ import {
 
 import "./Footer.css";
 
-const Footer = ({ footerImages }) => {
+import { images } from "../../assets/footerImages";
+
+const Footer = ({}) => {
+  const footerImages = images;
   return (
     <div className="footer_main_container">
       <h2 className="footer_title">FOLLOW US ON INSTAGRAM</h2>

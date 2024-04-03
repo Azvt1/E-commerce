@@ -16,7 +16,6 @@ const Register = () => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
   const emailPattern = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
-
   useEffect(() => {
     fetch("http://localhost:3000/user")
       .then((response) => response.json())

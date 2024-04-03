@@ -41,21 +41,23 @@ const Navbar = () => {
 
         <div className="navbar_right">
           <ul className={openMenu ? "open" : ""}>
-            <li>WISHLIST</li>
-            <li>CART</li>
             <li>
-              <img src={user} />
+              <NavLink to="/wishlist">WISHLIST</NavLink>
             </li>
             <li>
-              <img src={searchIcon} />
+              <NavLink to="/cart">CART</NavLink>
             </li>
             <li>
+              <NavLink to="/smth">
+                <img src={user} />
+              </NavLink>
+            </li>
+            {/* <li>
               <img src={burgerIcon} />
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
-      <div className="separator"></div>
     </div>
   );
 };

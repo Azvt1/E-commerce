@@ -46,6 +46,10 @@ nav ul li a {
   align-items: center;
 }
 
+.navbar_right li a {
+  text-decoration: none;
+}
+
 .navbar_middle {
   padding-left: 50px;
 }

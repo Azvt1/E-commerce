@@ -1,0 +1,22 @@
+.wishlist-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 50px;
+  margin: 100px 50px 100px 50px;
+}
+
+.wishlist-title {
+  display: grid;
+  grid-template-columns: 600px repeat(3, minmax(100px, 200px));
+  grid-gap: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.wishlist-center-title {
+  justify-self: center;
+  align-self: center;
+}
+
+
