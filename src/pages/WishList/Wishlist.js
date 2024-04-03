@@ -23,7 +23,7 @@ const Wishlist = () => {
       {
         id: 2,
         img: img1,
-        title: "Different jacket with something on",
+        title: "Different jacket with something",
         price: 76,
       },
       {
@@ -69,9 +69,8 @@ const Wishlist = () => {
       <div className="wishlist-container">
         <div className="wishlist-title">
             <h3>PRODUCT</h3>
-            <h3 id="price">UNIT PRICE</h3>
+            <h3 className="wishlist-center-title">UNIT PRICE</h3>
         </div>
-        <div className="wishlist-items">
           {wishItems.map((item) => (
             <WishlistItem
               key={item.id}
@@ -82,7 +81,6 @@ const Wishlist = () => {
               handleRemove={handleRemove}
             />
           ))}
-        </div>
       </div>
       <Footer />
     </div>

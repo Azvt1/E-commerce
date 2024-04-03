@@ -29,9 +29,10 @@
       background-color: #f3f9ff;
   }
   
-  .incr-btn p {
+
+
+  .btn-group p {
     width: 50px;
-    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
