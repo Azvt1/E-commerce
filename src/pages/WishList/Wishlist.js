@@ -23,7 +23,7 @@ const Wishlist = () => {
       {
         id: 2,
         img: img1,
-        title: "Different jacket with something on it",
+        title: "Different jacket with something on",
         price: 76,
       },
       {
@@ -68,12 +68,8 @@ const Wishlist = () => {
       <HeaderForPages image={clothesHanging} text={"WISHLIST"} />
       <div className="wishlist-container">
         <div className="wishlist-title">
-          <div>
             <h3>PRODUCT</h3>
-          </div>
-          <div className="unitPrice">
             <h3 id="price">UNIT PRICE</h3>
-          </div>
         </div>
         <div className="wishlist-items">
           {wishItems.map((item) => (
