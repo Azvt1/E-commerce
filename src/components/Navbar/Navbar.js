@@ -48,7 +48,7 @@ const Navbar = () => {
               <NavLink to="/cart">CART</NavLink>
             </li>
             <li>
-              <NavLink to="/smth">
+              <NavLink to="/account">
                 <img src={user} />
               </NavLink>
             </li>

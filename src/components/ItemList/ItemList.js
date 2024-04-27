@@ -11,11 +11,11 @@ export default function ItemList({ list }) {
   };
 
   const rows = chunkArray(list, 3);
-
+  console.log(rows);
   return list.length > 0 ? (
-    <div className="whole_itemList_container">
+    <div className='whole_itemList_container'>
       {rows.map((row, rowIndex) => (
-        <div className="itemList_row" key={rowIndex}>
+        <div className='itemList_row' key={rowIndex}>
           {row.map((item) => (
             <Link to={`/item/${item.id}`} key={item.id}>
               <Item
@@ -29,7 +29,7 @@ export default function ItemList({ list }) {
       ))}
     </div>
   ) : (
-    <div className="no_items_container">
+    <div className='no_items_container'>
       <h3>Sorry, but there are no items with pictures</h3>
     </div>
   );

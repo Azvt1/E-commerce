@@ -46,6 +46,7 @@ export const Cart = () => {
           <h3 className="center-title">QUANTITY</h3>
           <h3 className="center-title">TOTAL</h3>
         </div>
+        
         {cartItems.map(item => 
           (
             <CartItem title={item.title} image={item.img} price={item.price} quantity={item.quantity} id={item.id} removeHandler={removeHandler} />

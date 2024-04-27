@@ -1,0 +1,24 @@
+
+
+.acc-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    padding: 50px;
+    border-radius: 20px;
+    gap: 150px;
+}
+
+.acc-container ul {
+    list-style: none;
+}
+
+.acc-container li {
+    margin-bottom: 20px;
+}

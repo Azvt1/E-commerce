@@ -57,14 +57,14 @@ const Shop = () => {
       return (
         <div>
           <Navbar />
-          <h2 className="no-items">Sorry, but there is no items</h2>
+          <h2 className='no-items'>Sorry, but there is no items</h2>
         </div>
       );
     }
     return (
       <div>
         <Navbar />
-        <div className="loading">Loading...</div>
+        <div className='loading'>Loading...</div>
       </div>
     );
   }
@@ -77,7 +77,7 @@ const Shop = () => {
     <div>
       <Navbar />
       <HeaderForPages image={clothesHanging} text={"SHOP"} />
-      <div className="shop_container">
+      <div className='shop_container'>
         <ShopItems
           currentItems={currentItems}
           firstItemIndex={firstItemIndex}

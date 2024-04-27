@@ -13,12 +13,12 @@ export default function ShopItems({
   currentPage,
 }) {
   if (!itemList || itemList.length === 0) {
-    return <div className="no_items_container">No such products</div>;
+    return <div className='no_items_container'>No such products</div>;
   }
 
   return (
-    <div className="shopItems_container">
-      <h4 className="shopItems_title">
+    <div className='shopItems_container'>
+      <h4 className='shopItems_title'>
         Showing {firstItemIndex + 1} - {lastItemIndex} of {itemList.length}{" "}
         results
       </h4>
