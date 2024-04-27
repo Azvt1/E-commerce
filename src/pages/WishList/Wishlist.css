@@ -19,4 +19,10 @@
   align-self: center;
 }
 
+.empty-wishlist {
+  margin-top: 100px;
+}
 
+.status-message {
+  margin-top: 50px;
+}

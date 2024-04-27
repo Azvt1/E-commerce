@@ -7,6 +7,7 @@ import ItemPage from "./pages/ItemPage/ItemPage";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Wishlist from "./pages/WishList/Wishlist";
+import Account from "./pages/Account/Account";
 import { Cart } from "./pages/Cart/Cart";
 
 export const routes = [
@@ -77,7 +78,7 @@ export const routes = [
     element: <Wishlist />,
     name: "Wishist",
     isMenu: true,
-    isPrivate: false,
+    isPrivate: true,
   },
 
   {
@@ -85,6 +86,14 @@ export const routes = [
     element: <Cart />,
     name: "Cart",
     isMenu: true,
-    isPrivate: false
+    isPrivate: true
+  },
+
+  {
+    path: "/account",
+    element: <Account />,
+    name: "Account",
+    isMenu: true,
+    isPrivate: true
   }
 ];
